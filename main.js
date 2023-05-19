@@ -36,7 +36,7 @@ const init = async () =>{
       vision,
       {
         baseOptions: {
-          modelAssetPath: "https://cdn.glitch.global/fd5c7ebf-b4a1-4c32-883f-02d6a0443457/hand_landmarker.task"
+          modelAssetPath: "./hand_landmarker.task"
         },
         numHands: 2
       });
