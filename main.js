@@ -36,9 +36,10 @@ const init = async () =>{
       vision,
       {
         baseOptions: {
-          modelAssetPath: "./hand_landmarker.task"
+          modelAssetPath: "./hand_landmarker.task", //.taskファイルを指定する
+          delegate: "GPU" //CPU or GPUで処理するかを指定する
         },
-        numHands: 2
+        numHands: 2 //認識できる手の数
       });
   
   await handLandmarker.setOptions({ runningMode: "video" });
@@ -52,9 +53,7 @@ const init = async () =>{
     let startTimeMs = performance.now();
     if (video.currentTime > 0 && video.currentTime !== lastVideoTime) {
       const results = handLandmarker.detectForVideo(video,startTimeMs);
-      //processResults(detections);
       lastVideoTime = video.currentTime;
-      //console.log(results)
       
       canvasCtx.save();
       canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
